@@ -14,10 +14,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-
--- [[ Configure and install plugins ]]
-require('lazy').setup 'plugins'
 require 'vim-options'
 
+-- [[ Configure and install plugins ]]
+require('lazy').setup {
+  spec = {
+    { import = 'plugins' },
+    { import = 'plugins.configs' },
+    { import = 'plugins.themes' },
+    { import = 'plugins.ui' },
+  },
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
