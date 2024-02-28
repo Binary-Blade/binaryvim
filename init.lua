@@ -14,14 +14,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-require 'vim-options'
+require 'core.settings'
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup {
   spec = {
+    { import = 'themes' },
+    { import = 'lsp' },
     { import = 'plugins' },
     { import = 'plugins.configs' },
-    { import = 'plugins.themes' },
     { import = 'plugins.ui' },
   },
 }
