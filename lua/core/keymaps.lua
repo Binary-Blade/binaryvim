@@ -41,6 +41,11 @@ map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 map('n', '<A-x>', '<Cmd>BufferClose<CR>', opts)
 map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
+-- TodoComment
+set('n', '<leader>tt', ':TodoTelescope keywords=TODO,FIX<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: TODO, FIX' }))
+set('n', '<leader>tn', ':TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: NOTE' }))
+set('n', '<leader>tw', ':TodoTelescope keywords=WARNING<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: WARNING' }))
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -70,12 +75,6 @@ function M.telescope_keymaps()
   set('n', '<leader>fc', function()
     builtin.find_files { cwd = vim.fn.stdpath 'config' }
   end, { desc = '[F]ind [C]onfig files' })
-  set('n', '<leader>ft', function()
-    builtin.live_grep {
-      default_text = 'TODO:',
-      prompt_title = 'Find TODOs',
-    }
-  end, { desc = '[F]ind [T]odos' })
 
   set('n', '<leader>/', function()
     builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
