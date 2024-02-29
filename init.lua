@@ -22,7 +22,7 @@ require('lazy').setup {
     { import = 'plugins' },
     { import = 'plugins.configs' },
     { import = 'plugins.utils' },
-    { import = 'plugins.ui' },
+    { import = 'plugins.navigation' },
   },
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
