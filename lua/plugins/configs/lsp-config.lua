@@ -22,15 +22,10 @@ return { -- LSP Configuration & Plugins
         -- to define small helper and utility functions so you don't have to repeat yourself
         -- many times.
         --
-        -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        -- Jump to the definition of the word under your cursor.
-        --  This is where a variable was first declared, or where a function is defined, etc.
-        --  To jump back, press <C-T>.
         map('<leader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
