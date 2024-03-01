@@ -55,11 +55,12 @@ return {
     --  - filetypes (table): Override the default list of associated filetypes for the server
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
-    -- TODO:
-    -- Some languages (like typescript) have entire language plugins that can be useful: https://github.com/pmizio/typescript-tools.nvim
+    --  NOTE: Here to add lsp server
+    --  Some languages (like typescript) have entire language plugins that can be useful: https://github.com/pmizio/typescript-tools.nvim
     local servers = {
       tsserver = {},
       volar = {},
+      angularls = {},
       lua_ls = {
         -- cmd = {...},
         -- capabilities = {},
