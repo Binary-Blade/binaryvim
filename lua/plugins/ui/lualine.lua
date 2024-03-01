@@ -1,4 +1,3 @@
---  To jump back, press <C-T>.
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
@@ -24,7 +23,7 @@ return {
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         always_divide_middle = false,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
