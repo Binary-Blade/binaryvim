@@ -1,8 +1,9 @@
 return {
-
   -- NOTE: Done 29/02 16h20
+  -- FIX: When select I have to use tab or enter to apply my selection instead of doing automatically
   {
     'hrsh7th/cmp-nvim-lsp',
+    -- 'hrsh7th/cmp-path',
   },
   {
     'L3MON4D3/LuaSnip',
@@ -49,7 +50,12 @@ return {
           end, { 'i', 's' }),
           ['<CR>'] = cmp.mapping.confirm { select = false }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         },
-        sources = cmp.config.sources { { name = 'nvim_lsp' }, { name = 'luasnip' }, { name = 'buffer' } },
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          --{ name = 'path' },
+        },
       }
     end,
   },
