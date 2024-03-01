@@ -28,10 +28,10 @@ return {
 
     -- Button/Menu Section
     dashboard.section.buttons.val = {
-      -- Recent Files
-      dashboard.button('r', '  Recent Files', ':Telescope oldfiles<CR>'),
       -- Find Files
       dashboard.button('f', '  Find Files', ':Telescope find_files<CR>'),
+      -- Recent Files
+      dashboard.button('r', '  Recent Files', ':Telescope oldfiles<CR>'),
       -- Find Config Files
       dashboard.button('c', '󰮗  Find Config', ':Telescope find_files cwd=' .. vim.fn.stdpath 'config' .. '<CR>'),
       -- Configure Lazy

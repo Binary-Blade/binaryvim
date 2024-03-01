@@ -7,9 +7,4 @@ return {
     'MunifTanjim/nui.nvim',
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
-  -- TODO: Change mapping and see some other features
-  -- Add <leader>e to show and close just with that keymap
-  config = function()
-    vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left<CR>', {})
-  end,
 }

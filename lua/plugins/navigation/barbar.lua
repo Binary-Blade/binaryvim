@@ -22,7 +22,5 @@ return {
       ['neo-tree'] = { event = 'BufWipeout' },
     },
     focus_on_close = 'left',
-
-    -- TODO: Add integrations like minivim, persistence etc
   },
 }
