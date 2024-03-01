@@ -1,22 +1,23 @@
 local M = {}
 local set = vim.keymap.set
-local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+-- TODO: TO REFACTORING LATER : REORGANIZE IT FOR SEPARATE CONCERNS
+set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+set('t', '<leader>q', '<C-\\><C-n>', opts)
+
+-- Quick keymaps
+set('n', '<leader>qq', ':wqa<CR>', { desc = '[Q]uick [Q]uit Neovim' }, opts)
+set('n', '<leader>qp', 'vi)', { desc = '[Q]uick Inside [P]arentheses [(]' }, opts)
+set('n', '<leader>qc', 'vi}', { desc = '[Q]uick Inside [C]urly [}]' }, opts)
+set('n', '<leader>qb', 'vi]', { desc = '[Q]uick Inside [B]racket [[]' }, opts)
+set('n', '<leader>qs', "vi'", { desc = "[Q]uick Inside [S]imple quote[']" }, opts)
 
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
 set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
-set('t', '<leader>qq', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- TIP: Disable arrow keys in normal mode
-set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  See `:help wincmd` for a list of all window commands
@@ -24,27 +25,34 @@ set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- TIP: Disable arrow keys in normal mode
+set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Buffer key
-map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
-map('n', '<A-x>', '<Cmd>BufferClose<CR>', opts)
-map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
+set('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
+set('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
+set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
+set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
+set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
+set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
+set('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
+set('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
+set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
+set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
+set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
+set('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+set('n', '<A-x>', '<Cmd>BufferClose<CR>', opts)
+set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
 -- TodoComment
-set('n', '<leader>tt', ':TodoTelescope keywords=TODO,FIX<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: TODO, FIX' }))
-set('n', '<leader>tn', ':TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: NOTE' }))
-set('n', '<leader>tw', ':TodoTelescope keywords=WARNING<CR>', vim.tbl_extend('force', opts, { desc = 'Todo: WARNING' }))
+set('n', '<leader>ft', ':TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
+set('n', '<leader>fn', ':TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
+
+-- Neotree
+set('n', '<leader>e', ':Neotree filesystem reveal left<CR>', { desc = 'Open Neotre[E]' }, opts)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
