@@ -44,7 +44,7 @@ set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
 set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
 set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
 set('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
-set('n', '<A-x>', '<Cmd>BufferClose<CR>', opts)
+set('n', '<leader>x', ':BufferClose<CR>', opts)
 set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
 -- TodoComment
