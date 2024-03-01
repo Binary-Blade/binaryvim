@@ -50,11 +50,6 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     -- Enable the following language servers
-    --  Add any additional override configuration in the following tables.
-    --  - cmd (table): Override the default command used to start the server
-    --  - filetypes (table): Override the default list of associated filetypes for the server
-    --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    --  - settings (table): Override the default settings passed when initializing the server.
     --  NOTE: Here to add lsp server
     --  Some languages (like typescript) have entire language plugins that can be useful: https://github.com/pmizio/typescript-tools.nvim
     local servers = {
@@ -83,6 +78,7 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua',
     })
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {

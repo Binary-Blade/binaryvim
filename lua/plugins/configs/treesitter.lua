@@ -19,6 +19,7 @@ return { -- Highlight, edit, and navigate code
         'angular',
         'svelte',
         'markdown',
+        'markdown_inline',
       },
       auto_install = true,
       highlight = { enable = true },
