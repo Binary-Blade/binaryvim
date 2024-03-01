@@ -3,7 +3,7 @@ return {
   -- FIX: When select I have to use tab or enter to apply my selection instead of doing automatically
   {
     'hrsh7th/cmp-nvim-lsp',
-    -- 'hrsh7th/cmp-path',
+    'hrsh7th/cmp-path',
   },
   {
     'L3MON4D3/LuaSnip',
@@ -54,7 +54,8 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'buffer' },
-          --{ name = 'path' },
+          { name = 'nerdfont' },
+          { name = 'path' },
         },
       }
     end,

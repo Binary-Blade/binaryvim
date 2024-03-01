@@ -1,7 +1,6 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin-mocha',
-  enabled = true,
   config = function()
     require('catppuccin').setup {
       flavour = 'mocha',
