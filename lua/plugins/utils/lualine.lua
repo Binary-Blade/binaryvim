@@ -36,7 +36,7 @@ return {
           {
             'fileformat',
             symbols = {
-              unix = '', -- e712
+              unix = '', -- e712
             },
           },
           'mode',
