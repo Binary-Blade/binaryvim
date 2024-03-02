@@ -18,6 +18,8 @@ return { -- Highlight, edit, and navigate code
         'php',
         'angular',
         'svelte',
+        'python',
+        'svelte',
         'markdown',
         'markdown_inline',
       },
