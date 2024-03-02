@@ -56,6 +56,7 @@ return {
       tsserver = {},
       volar = {},
       angularls = {},
+      pyright = {},
       lua_ls = {
         -- cmd = {...},
         -- capabilities = {},
