@@ -7,11 +7,11 @@ set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 set('t', '<leader>q', '<C-\\><C-n>', opts)
 
 -- Quick keymaps
-set('n', '<leader>qq', ':wqa<CR>', { desc = '[Q]uick [Q]uit Neovim' }, opts)
+set('n', '<leader>ql', ':wqa<CR>', { desc = '[Q]uick [L]eft Neovim' }, opts)
 set('n', '<leader>qp', 'vi)', { desc = '[Q]uick Inside [P]arentheses [(]' }, opts)
 set('n', '<leader>qc', 'vi}', { desc = '[Q]uick Inside [C]urly [}]' }, opts)
 set('n', '<leader>qb', 'vi]', { desc = '[Q]uick Inside [B]racket [[]' }, opts)
-set('n', '<leader>qs', "vi'", { desc = "[Q]uick Inside [S]imple quote[']" }, opts)
+set('n', '<leader>qq', "vi'", { desc = "[Q]uick Inside [Q]uote[']" }, opts)
 
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -20,7 +20,7 @@ set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E
 set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
 -- Keybinds to make split navigation easier.
---  See `:help wincmd` for a list of all window commands
+-- See `:help wincmd` for a list of all window commands
 set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
