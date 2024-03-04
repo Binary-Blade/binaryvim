@@ -35,7 +35,7 @@ return {
       -- Find Config Files
       dashboard.button('c', '󰮗  Find Config', ':Telescope find_files cwd=' .. vim.fn.stdpath 'config' .. '<CR>'),
       -- Configure Lazy
-      dashboard.button('b', '  Config Lazyvim', ':Lazy <CR>'),
+      dashboard.button('l', '  Config Lazyvim', ':Lazy <CR>'),
       -- Configure Mason
       dashboard.button('m', '  Config Mason', ':Mason<CR>'),
       -- Quit
