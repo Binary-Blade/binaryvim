@@ -18,7 +18,6 @@ require 'core.settings'
 require('lazy').setup {
   spec = {
     { import = 'themes' },
-    { import = 'plugins' },
     { import = 'plugins.configs' },
     { import = 'plugins.ui' },
     { import = 'plugins.navigation' },

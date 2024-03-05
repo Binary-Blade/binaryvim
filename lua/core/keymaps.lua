@@ -3,8 +3,13 @@ local set = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- TODO: TO REFACTORING LATER : REORGANIZE IT FOR SEPARATE CONCERNS
+
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 set('t', '<leader>q', '<C-\\><C-n>', opts)
+
+-- -- Debugger
+-- set('n', '<leader>db', '<Cmd>DapToggleBreakPoint<CR>', { desc = '[D]ebugger Add [B]reakpoint' }, opts)
+-- set('n', '<leader>dc', '<Cmd>DapContinue<CR>', { desc = '[D]ebugger Start or [C]ontinue' }, opts)
 
 -- Quick keymaps
 set('n', '<leader>ql', ':wqa<CR>', { desc = '[Q]uick [L]eft Neovim' }, opts)
@@ -16,8 +21,8 @@ set('n', '<leader>qq', "vi'", { desc = "[Q]uick Inside [Q]uote[']" }, opts)
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
-set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+set('n', '<leader>De', vim.diagnostic.open_float, { desc = 'Show [D][E]rror messages' })
+set('n', '<leader>Dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
 -- Keybinds to make split navigation easier.
 -- See `:help wincmd` for a list of all window commands
