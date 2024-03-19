@@ -21,8 +21,8 @@ set('n', '<leader>qq', "vi'", { desc = "[Q]uick Inside [Q]uote[']" }, opts)
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-set('n', '<leader>De', vim.diagnostic.open_float, { desc = 'Show [D][E]rror messages' })
-set('n', '<leader>Dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+set('n', '<leader>ce', vim.diagnostic.open_float, { desc = 'Show [C]ode [E]error Diagnostic ' })
+set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open [C]ode [Q]uick Diagnostic list' })
 
 -- Keybinds to make split navigation easier.
 -- See `:help wincmd` for a list of all window commands
