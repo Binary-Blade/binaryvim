@@ -32,8 +32,8 @@ return {
         close_on_exit = true,
         float_opts = {
           border = 'curved',
-          width = 140,
-          height = 34,
+          width = 180,
+          height = 38,
         },
       },
       horizonterm = {
@@ -41,7 +41,7 @@ return {
         dir = vim.fn.getcwd(),
         shade_terminals = true,
         close_on_exit = true,
-        keymap = '<C-t>',
+        keymap = '<leader>th',
         toggleFunc = 'horizonterm_toggle',
         float_opts = {
           border = 'double',
