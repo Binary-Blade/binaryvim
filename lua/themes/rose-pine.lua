@@ -7,7 +7,7 @@ return {
       variant = 'main',
       dark_variant = 'main',
       styles = {
-        transparency = true,
+        transparency = false,
       },
     }
     vim.cmd [[colorscheme rose-pine]]
