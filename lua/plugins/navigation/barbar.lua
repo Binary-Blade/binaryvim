@@ -11,8 +11,6 @@ return {
     -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
     animation = true,
     insert_at_end = true,
-
-    -- TODO: Later => See more about that plugin
     gitsigns = {
       added = { enabled = true, icon = '+' },
       changed = { enabled = true, icon = '~' },
