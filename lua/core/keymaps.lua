@@ -47,11 +47,11 @@ set('n', '<leader>x', ':BufferClose<CR>', opts)
 set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
 -- TodoComment
-set('n', '<leader>ft', ':TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
-set('n', '<leader>fn', ':TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
+set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
+set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
 
 -- Neotree
-set('n', '<leader>e', ':Neotree filesystem reveal left<CR>', { desc = 'Open Neotre[E]' }, opts)
+set('n', '<leader>e', '<CMD>Neotree toggle left<CR>', { desc = 'Open Neotre[E]' }, opts)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
