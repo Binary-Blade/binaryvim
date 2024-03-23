@@ -49,7 +49,9 @@ set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 -- TodoComment
 set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
 set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
+set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
 
+-- TODO: Add command to use neotree for the buffer instead tab
 -- Neotree
 set('n', '<leader>e', '<CMD>Neotree toggle left<CR>', { desc = 'Open Neotre[E]' }, opts)
 
