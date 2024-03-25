@@ -16,6 +16,7 @@ return { -- Highlight, edit, and navigate code
         'vue',
         'typescript',
         'php',
+        'tsx',
         'angular',
         'svelte',
         'python',

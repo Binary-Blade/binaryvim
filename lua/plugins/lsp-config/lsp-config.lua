@@ -11,15 +11,29 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+    -- Want to desactive import diagnostics
     local servers = {
-      -- TS/JS
-      tsserver = {},
+      tsserver = {
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = '/opt/homebrew/lib/node_modules/@vue/language-server/',
+              languages = { 'javascript', 'typescript', 'vue' },
+            },
+          },
+        },
+        filetypes = {
+          'javascript',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
+          'javascriptreact',
+          'javascript.jsx',
+        },
+      },
       volar = {},
-      angularls = {},
-      -- Python
-      pyright = {},
-      -- Rust & C
-      rust_analyzer = {},
+      -- C
       clangd = {},
       -- PHP
       intelephense = {
@@ -56,11 +70,9 @@ return {
       'clangd',
       'clang-format',
       'codelldb',
-      'pyright',
       'intelephense',
+      'vue-language-server',
     })
-
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
       handlers = {
@@ -75,6 +87,8 @@ return {
         end,
       },
     }
+
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
