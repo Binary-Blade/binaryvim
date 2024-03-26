@@ -32,7 +32,9 @@ return {
           'javascript.jsx',
         },
       },
-      volar = {},
+      volar = {
+        filetypes = { 'vue' },
+      },
       -- C
       clangd = {},
       -- PHP

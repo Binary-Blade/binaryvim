@@ -6,24 +6,6 @@ return { -- Highlight, edit, and navigate code
 
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
-      ensure_installed = {
-        'c',
-        'lua',
-        'vim',
-        'vimdoc',
-        'javascript',
-        'html',
-        'vue',
-        'typescript',
-        'php',
-        'tsx',
-        'angular',
-        'svelte',
-        'python',
-        'svelte',
-        'markdown',
-        'markdown_inline',
-      },
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
