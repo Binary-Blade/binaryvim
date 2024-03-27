@@ -24,12 +24,6 @@ set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic messa
 set('n', '<leader>ce', vim.diagnostic.open_float, { desc = 'Show [C]ode [E]error Diagnostic ' })
 set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open [C]ode [Q]uick Diagnostic list' })
 
--- Keybinds to make split navigation easier.
--- See `:help wincmd` for a list of all window commands
-set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 -- TIP: Disable arrow keys in normal mode
 set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
