@@ -74,6 +74,7 @@ return {
       'codelldb',
       'intelephense',
       'vue-language-server',
+      'typescript-language-server',
     })
 
     require('mason-lspconfig').setup {
