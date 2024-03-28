@@ -18,22 +18,19 @@ return {
           plugins = {
             {
               name = '@vue/typescript-plugin',
-              location = '/opt/homebrew/lib/node_modules/@vue/language-server/',
-              languages = { 'javascript', 'typescript', 'vue' },
+              location = '/opt/homebrew/lib/node_modules/@vue/language-server',
+              languages = { 'vue' },
             },
           },
         },
-        filetypes = {
-          'javascript',
-          'typescript',
-          'typescriptreact',
-          'typescript.tsx',
-          'javascriptreact',
-          'javascript.jsx',
-        },
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
       },
       volar = {
-        filetypes = { 'vue' },
+        init_options = {
+          vue = {
+            hybridMode = false,
+          },
+        },
       },
       -- C
       clangd = {},
@@ -64,34 +61,17 @@ return {
         },
       },
     }
+    -- Configure each LSP server
+    for server_name, config in pairs(servers) do
+      require('lspconfig')[server_name].setup(vim.tbl_deep_extend('force', {
+        capabilities = capabilities,
+      }, config))
+    end
 
-    require('mason').setup()
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua',
-      'clangd',
-      'clang-format',
-      'codelldb',
-      'intelephense',
-      'vue-language-server',
-      'typescript-language-server',
-    })
-
+    -- Ensure the specified LSP servers are installed
     require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          require('lspconfig')[server_name].setup {
-            cmd = server.cmd,
-            settings = server.settings,
-            filetypes = server.filetypes,
-            capabilities = capabilities,
-          }
-        end,
-      },
+      ensure_installed = vim.tbl_keys(servers),
     }
-
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
