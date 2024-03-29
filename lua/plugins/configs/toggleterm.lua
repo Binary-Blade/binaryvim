@@ -8,7 +8,7 @@ return {
       lazygit = {
         cmd = 'lazygit',
         dir = 'git_dir',
-        keymap = '<leader>vg',
+        keymap = '<leader>tg',
         toggleFunc = 'lazygit_toggle',
         close_on_exit = true,
         float_opts = {
@@ -18,7 +18,7 @@ return {
       lazydocker = {
         cmd = 'lazydocker',
         dir = '~/',
-        keymap = '<leader>vd',
+        keymap = '<leader>td',
         toggleFunc = 'lazydocker_toggle',
         close_on_exit = false,
         float_opts = {
@@ -27,7 +27,7 @@ return {
       },
       virtualTerm = {
         dir = vim.fn.getcwd(),
-        keymap = '<leader>vt',
+        keymap = '<leader>tt',
         toggleFunc = 'virtualTerm_toggle',
         close_on_exit = true,
         float_opts = {
