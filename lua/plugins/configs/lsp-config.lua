@@ -10,6 +10,7 @@ return {
     -- Define the configuration for LSP servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    require("mason").setup()
 
     -- Want to desactive import diagnostics
     local servers = {
@@ -61,6 +62,8 @@ return {
         },
       },
     }
+
+
     -- Configure each LSP server
     for server_name, config in pairs(servers) do
       require('lspconfig')[server_name].setup(vim.tbl_deep_extend('force', {
@@ -72,6 +75,7 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = vim.tbl_keys(servers),
     }
+
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
