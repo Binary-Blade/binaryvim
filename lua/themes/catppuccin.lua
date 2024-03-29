@@ -1,23 +1,12 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin-mocha',
+  priority = 1000,
   enabled = true,
   config = function()
     require('catppuccin').setup {
       flavour = 'mocha',
-      transparent_background = true,
-
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
-          enabled = true,
-          indentscope_color = '',
-        },
-      },
+      --transparent_background = true,
     }
     vim.cmd.colorscheme 'catppuccin-mocha'
     -- You can configure highlights by doing something like
