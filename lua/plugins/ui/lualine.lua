@@ -61,19 +61,8 @@ return {
       sections = {
         lualine_a = { { mode_icon, separator = { left = '', right = '' } } },
         lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic', 'coc' } } },
-        lualine_c = {
-          {
-
-            symbols = {
-              modified = '󰔯', -- Icon for modified files
-              readonly = '', -- Icon for read-only files
-              unnamed = '', -- Icon for unnamed buffers
-              newfile = '', -- Icon for new files
-            },
-          },
-        },
         lualine_x = {
-          { lsp_status, color = { fg = '#ffeead' } },
+          { lsp_status, color = { fg = '#cbbbf4' } },
           {
             'filetype',
             colored = true,            -- Displays filetype icon in color if set to true
@@ -81,8 +70,7 @@ return {
             icon = { align = 'left' }, -- Display filetype icon on the right hand side
           },
         },
-        lualine_y = { 'progress' },
-        lualine_z = { { 'filename', path = 1, shorting_target = 40 } },
+        lualine_y = { { 'filename', path = 1, shorting_target = 40 } },
       },
       inactive_sections = {},
       winbar = {},
