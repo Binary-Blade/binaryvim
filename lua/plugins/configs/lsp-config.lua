@@ -84,13 +84,12 @@ return {
 
         key_map('<leader>ld', require('telescope.builtin').lsp_definitions, '[D]efinition')
         key_map('<leader>lr', require('telescope.builtin').lsp_references, '[R]eferences')
-        key_map('<leader>lI', require('telescope.builtin').lsp_implementations, '[I]mplementation')
-        key_map('<leader>lT', require('telescope.builtin').lsp_type_definitions, '[T]ype Definition')
+        key_map('<leader>li', require('telescope.builtin').lsp_implementations, '[I]mplementation')
+        key_map('<leader>lt', require('telescope.builtin').lsp_type_definitions, '[T]ype Definition')
         key_map('<leader>lf', require('telescope.builtin').lsp_document_symbols, '[F]ind Symbols')
         key_map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
-        --key_map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         key_map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action')
-        key_map('N', vim.lsp.buf.rename, 'Re[N]ame')
+        key_map('N', vim.lsp.buf.rename, 'Rename')
         key_map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
         --    See `:help CursorHold` for information about when this is executed
