@@ -1,3 +1,4 @@
+-- Load lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -17,7 +18,7 @@ require 'core.settings'
 -- [[ Configure and install plugins ]]
 require('lazy').setup {
   spec = {
-    { import = 'themes' },
+    { import = 'plugins.themes' },
     { import = 'plugins.configs' },
     { import = 'plugins.ui' },
     { import = 'plugins.navigation' },
