@@ -10,7 +10,7 @@ return {
     -- Define the configuration for LSP servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    require("mason").setup()
+    require('mason').setup()
 
     -- Want to desactive import diagnostics
     local servers = {
@@ -63,7 +63,6 @@ return {
       },
     }
 
-
     -- Configure each LSP server
     for server_name, config in pairs(servers) do
       require('lspconfig')[server_name].setup(vim.tbl_deep_extend('force', {
@@ -76,7 +75,6 @@ return {
       ensure_installed = vim.tbl_keys(servers),
     }
 
-
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -84,15 +82,15 @@ return {
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        key_map('<leader>gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        key_map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        key_map('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        key_map('<leader>gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        key_map('<leader>gT', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype [D]efinition')
-        key_map('<leader>fd', require('telescope.builtin').lsp_document_symbols, '[F]ind [D]ocument Symbols')
-        key_map('<leader>fw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind [W]orkspace Symbols')
-        key_map('<leader>cr', vim.lsp.buf.rename, '[R]e[n]ame')
-        key_map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+        key_map('<leader>ld', require('telescope.builtin').lsp_definitions, '[D]efinition')
+        key_map('<leader>lr', require('telescope.builtin').lsp_references, '[R]eferences')
+        key_map('<leader>lI', require('telescope.builtin').lsp_implementations, '[I]mplementation')
+        key_map('<leader>lT', require('telescope.builtin').lsp_type_definitions, '[T]ype Definition')
+        key_map('<leader>lf', require('telescope.builtin').lsp_document_symbols, '[F]ind Symbols')
+        key_map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
+        --key_map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        key_map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action')
+        key_map('N', vim.lsp.buf.rename, 'Re[N]ame')
         key_map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
         --    See `:help CursorHold` for information about when this is executed

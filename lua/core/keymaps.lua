@@ -12,11 +12,10 @@ set('t', '<leader>q', '<C-\\><C-n>', opts)
 -- set('n', '<leader>dc', '<Cmd>DapContinue<CR>', { desc = '[D]ebugger Start or [C]ontinue' }, opts)
 
 -- Quick keymaps
-set('n', '<leader>ql', ':wqa<CR>', { desc = '[Q]uick [L]eft Neovim' }, opts)
-set('n', '<leader>qp', 'vi)', { desc = '[Q]uick Inside [P]arentheses [(]' }, opts)
-set('n', '<leader>qc', 'vi}', { desc = '[Q]uick Inside [C]urly [}]' }, opts)
-set('n', '<leader>qb', 'vi]', { desc = '[Q]uick Inside [B]racket [[]' }, opts)
-set('n', '<leader>qq', "vi'", { desc = "[Q]uick Inside [Q]uote[']" }, opts)
+set('n', '<leader>q)', 'vi)', { desc = '[Q]uick Inside "vi()"' }, opts)
+set('n', '<leader>q}', 'vi}', { desc = '[Q]uick Inside "vi{}"' }, opts)
+set('n', '<leader>q]', 'vi]', { desc = '[Q]uick Inside "vi[]"' }, opts)
+set('n', "<leader>q'", "vi'", { desc = '[Q]uick Inside "vi"' }, opts)
 
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
