@@ -60,13 +60,26 @@ return {
       },
       sections = {
         lualine_a = { { mode_icon, separator = { left = '', right = '' } } },
-        lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic', 'coc' } } },
+        lualine_b = {
+          'branch',
+          'diff',
+          {
+            'diagnostics',
+            sources = { 'nvim_diagnostic', 'coc' },
+          },
+          {
+            require('noice').api.statusline.mode.get,
+            cond = require('noice').api.statusline.mode.has,
+            color = { fg = '#ff9e64' },
+          },
+        },
         lualine_x = {
           { lsp_status, color = { fg = '#cbbbf4' } },
           {
             'filetype',
-            colored = true,            -- Displays filetype icon in color if set to true
-            icon_only = false,         -- Display only an icon for filetype
+            color = { fg = '#cbbbf4' },
+            colored = true, -- Displays filetype icon in color if set to true
+            icon_only = false, -- Display only an icon for filetype
             icon = { align = 'left' }, -- Display filetype icon on the right hand side
           },
         },
