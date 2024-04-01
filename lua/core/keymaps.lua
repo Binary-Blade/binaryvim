@@ -29,24 +29,10 @@ set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Buffer key
-set('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
-set('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
-set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-set('n', '<leader>x', ':BufferClose<CR>', opts)
-set('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
-
 -- TodoComment
 set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
 set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
 set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
-
--- TODO: Add command to use neotree for the buffer instead tab
--- Neotree
-set('n', '<leader>e', '<CMD>Neotree toggle left<CR>', { desc = 'Open Neotre[E]' }, opts)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -67,10 +53,10 @@ function M.telescope_keymaps()
   set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
   set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
   set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-  set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 
+  -- Buffer
+  set('n', '<leader>bb', builtin.buffers, { desc = '[B]uffers Find [B]uffers' })
   -- Find
-  set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind existing [B]uffers' })
   set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
   set('n', '<leader>ff', builtin.find_files, { desc = '[F]find [F]iles' })
   set('n', '<leader>fr', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
