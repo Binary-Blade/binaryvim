@@ -22,6 +22,11 @@ return { -- Highlight, edit, and navigate code
         'python',
         'markdown',
         'markdown_inline',
+        "xml",
+        "http",
+        "json",
+        "graphql"
+
       },
       auto_install = true,
       highlight = { enable = true },
