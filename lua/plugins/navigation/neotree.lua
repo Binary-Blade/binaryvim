@@ -7,4 +7,6 @@ return {
     'MunifTanjim/nui.nvim',
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
+  -- Neotree
+  vim.keymap.set('n', '<leader>e', '<CMD>Neotree toggle left<CR>', { desc = 'Open Neotre[E]' }, { noremap = true, silent = true }),
 }
