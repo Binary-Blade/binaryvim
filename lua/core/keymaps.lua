@@ -33,7 +33,8 @@ set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- TodoComment
-set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX,WARNING<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX, WARNING' }))
+set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX' }))
+set('n', '<leader>fw', '<CMD>TodoTelescope keywords=WARN<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: WARNING' }))
 set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
 set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
 
