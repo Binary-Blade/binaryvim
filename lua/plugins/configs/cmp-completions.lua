@@ -28,7 +28,7 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert {
-          ['<C-Space>'] = cmp.mapping(function(fallback)
+          ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expandable() then
@@ -40,7 +40,7 @@ return {
             end
           end, { 'i', 's' }),
 
-          ['<C-b>'] = cmp.mapping(function(fallback)
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -49,7 +49,7 @@ return {
               fallback()
             end
           end, { 'i', 's' }),
-          ['<CR>'] = cmp.mapping.confirm { select = false }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<enter>'] = cmp.mapping.confirm { select = false }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         },
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
@@ -59,6 +59,15 @@ return {
           { name = 'path' },
         },
       }
+      -- Define a global variable to track the state of Copilot
+      function ToggleCopilot()
+        vim.g.copilot_enabled = not vim.g.copilot_enabled
+        if vim.g.copilot_enabled then
+          print 'Copilot actived'
+        else
+          print 'Copilot desactived'
+        end
+      end
     end,
   },
 }

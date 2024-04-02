@@ -1,5 +1,9 @@
+-- Global settings for neovim
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.copilot_enabled = false
+
+-- options for neovim
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'

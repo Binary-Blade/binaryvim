@@ -7,9 +7,12 @@ local opts = { noremap = true, silent = true }
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 set('t', '<leader>q', '<C-\\><C-n>', opts)
 
--- -- Debugger
+-- Debugger
 -- set('n', '<leader>db', '<Cmd>DapToggleBreakPoint<CR>', { desc = '[D]ebugger Add [B]reakpoint' }, opts)
 -- set('n', '<leader>dc', '<Cmd>DapContinue<CR>', { desc = '[D]ebugger Start or [C]ontinue' }, opts)
+
+-- Copilot
+set('n', '<leader>cc', ':lua ToggleCopilot()<CR>', { desc = '[C]ode Toggle [C]opilot' }, opts)
 
 -- Quick keymaps
 set('n', '<leader>q)', 'vi)', { desc = '[Q]uick Inside "vi()"' }, opts)
