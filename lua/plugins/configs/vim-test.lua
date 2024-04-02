@@ -3,6 +3,7 @@ return {
   dependencies = {
     'preservim/vimux',
   },
+  -- TODO: transfer keymaps to keymaps.lua and use telescope for that
   vim.keymap.set('n', '<leader>un', ':TestNearest<CR>'),
   vim.keymap.set('n', '<leader>uf', ':TestFile<CR>'),
   vim.keymap.set('n', '<leader>ua', ':TestSuite<CR>'),
