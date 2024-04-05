@@ -20,6 +20,12 @@ set('n', '<leader>q}', 'vi}', { desc = '[Q]uick Inside "vi{}"' }, opts)
 set('n', '<leader>q]', 'vi]', { desc = '[Q]uick Inside "vi[]"' }, opts)
 set('n', "<leader>q'", "vi'", { desc = '[Q]uick Inside "vi"' }, opts)
 
+-- Keymaps to resize tabs C-w + <direction> but increase by 15
+set('n', '<C-w>+', '<C-w>12>', { desc = 'Increase window size by 12' }, opts)
+set('n', '<C-w>-', '<C-w>12<', { desc = 'Decrease window size by 12' }, opts)
+set('n', '<C-w>>', '<C-w>12+', { desc = 'Increase window height by 12' }, opts)
+set('n', '<C-w><', '<C-w>12-', { desc = 'Decrease window height by 12' }, opts)
+
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
