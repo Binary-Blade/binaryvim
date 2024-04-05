@@ -89,7 +89,7 @@ return {
         key_map('<leader>lf', require('telescope.builtin').lsp_document_symbols, '[F]ind Symbols')
         key_map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
         key_map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action')
-        key_map('N', vim.lsp.buf.rename, 'Rename')
+        key_map('<leader>lR', vim.lsp.buf.rename, '[R]ename')
         key_map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
         --    See `:help CursorHold` for information about when this is executed
