@@ -1,40 +1,56 @@
--- Global settings for neovim
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.copilot_enabled = false
+-- Neovim Global Settings
+vim.g.mapleader = ' '         -- Set leader key
+vim.g.maplocalleader = ' '    -- Set local leader key
+vim.g.copilot_enabled = false -- Disable GitHub Copilot by default
+vim.g.editorconfig = false    -- Disable EditorConfig by default
 
--- options for neovim
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
-vim.opt.showmode = false
-vim.opt.clipboard = 'unnamedplus'
+-- User Interface Options
+vim.opt.number = true             -- Show line numbers
+vim.opt.relativenumber = true     -- Show relative line numbers
+vim.opt.mouse = 'a'               -- Enable mouse support
+vim.opt.showmode = false          -- Do not show mode (we use statusline plugins for that)
+vim.opt.signcolumn = 'yes'        -- Always show the sign column
+vim.opt.cursorline = true         -- Highlight the current line
+vim.opt.clipboard = 'unnamedplus' -- Use the system clipboard
 
--- TODO: Apply conceallevel only for markdown file
-vim.opt.conceallevel = 2
--- Enable break indent
-vim.opt.breakindent = true
-vim.opt.undofile = true
+-- Editor Behavior Options
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2   -- Number of spaces to use for each step of indentation
+vim.opt.smartcase = true -- Case-insensitive searching unless capital letters are used
+vim.opt.hlsearch = true  -- Highlight search matches
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 150
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+-- File and Buffer Management
+vim.opt.undofile = true  -- Save undo history
+vim.opt.backup = false   -- Disable backup
+vim.opt.swapfile = false -- Disable swapfile
 
--- Sets how neovim will display certain whitespace in the editor.
---  See :help 'list'
---  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- Whitespace Management
+vim.opt.wrap = false -- Disable line wrapping
+vim.opt.list = true -- Show whitespace characters
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Set listchars for whitespace
 
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-vim.opt.cursorline = true
+-- Performance
+vim.opt.updatetime = 250 -- Faster completion
+vim.opt.timeoutlen = 150 -- Faster key sequence completion
 
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-vim.opt.hlsearch = true
+-- Window Management
+vim.opt.splitright = true -- Vertical splits will open on the right
+vim.opt.splitbelow = true -- Horizontal splits will open below
+
+-- Additional Options
+vim.opt.breakindent = true   -- Enable break indent
+vim.opt.inccommand = 'split' -- Show incremental command previews
+vim.opt.scrolloff = 10       -- Keep at least 10 lines above/below
+vim.wo.conceallevel = 0      -- Conceal markup
+
+-- Filetype Specific Options
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.wo.conceallevel = 2 -- Conceal markup for markdown files
+  end,
+})
+
+-- TODO: Add keybindings for toggling line wrapping, etc.
+-- You would place custom key mappings here, possibly using a similar callback structure
+-- for setting up filetype-specific keybindings.
