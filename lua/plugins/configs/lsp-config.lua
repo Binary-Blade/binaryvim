@@ -14,6 +14,9 @@ return {
 
     -- Want to desactive import diagnostics
     local servers = {
+      -- C
+      clangd = {},
+      -- TS/JS
       tsserver = {
         init_options = {
           plugins = {
@@ -28,13 +31,9 @@ return {
       },
       volar = {
         init_options = {
-          vue = {
-            hybridMode = false,
-          },
+          vue = { hybridMode = false },
         },
       },
-      -- C
-      clangd = {},
       -- PHP
       intelephense = {
         filetypes = { 'php', 'blade' },
@@ -92,7 +91,6 @@ return {
         key_map('<leader>lR', vim.lsp.buf.rename, '[R]ename')
         key_map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-        --    See `:help CursorHold` for information about when this is executed
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

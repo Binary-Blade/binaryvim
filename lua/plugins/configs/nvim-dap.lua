@@ -2,10 +2,8 @@ return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
   dependencies = {
-    -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
-    -- Installs the debug adapters for you
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
   },
@@ -30,10 +28,6 @@ return {
             name = 'Listen for Xdebug',
             port = 9003,
             pathMappings = {
-              -- For some reason xdebug sometimes fails for me, depending on me
-              -- using herd or docker. To get it to work, change the order of the mappings.
-              -- The first mapping should be the one that you are actively using.
-              -- This only started recently, so I don't know what changed.
               ['${workspaceFolder}'] = '${workspaceFolder}',
               ['/var/www/html'] = '${workspaceFolder}',
             },
@@ -45,7 +39,6 @@ return {
     -- You'll need to check that you have the required things installed
     -- online, please don't ask me how to install them :)
     ensure_installed = {
-      -- Update this to ensure that you have the debuggers for the langs you want
       'php',
       'codelldb',
       'bash',
