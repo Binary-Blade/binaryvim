@@ -38,7 +38,10 @@
 
 ##  Overview
 
-Binaryvim is a comprehensive Neovim configuration project that enhances code editing experiences. It offers a rich assortment of features, including lazy-loaded plugins, UI enhancements for indenting, to-do lists, and custom themes. The project streamlines database integration, testing workflows, debugging setups, and key mappings for efficient development. With a strong focus on improving productivity and customization, Binaryvim aims to provide a seamless and feature-rich environment for software engineers.
+**BinaryVim** is my personal Neovim configuration project designed to enhance the code editing experience. 
+It features a rich assortment of plugins, UI enhancements for indenting, to-do lists, and custom themes. 
+The project streamlines database integration, testing workflows, debugging setups, and key mappings for efficient development. 
+With a strong focus on improving productivity and customization, Binaryvim aims to provide a seamless and feature-rich environment for software engineers.
 
 ---
 
