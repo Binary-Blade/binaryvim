@@ -1,13 +1,13 @@
 return {
   'rose-pine/neovim',
   name = 'rose-pine',
-  enabled = false,
+  enabled = true,
   config = function()
     require('rose-pine').setup {
       variant = 'main',
       dark_variant = 'main',
       styles = {
-        transparency = false,
+        transparency = true,
       },
     }
     vim.cmd [[colorscheme rose-pine]]
