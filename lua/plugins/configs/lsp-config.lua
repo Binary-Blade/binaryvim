@@ -18,18 +18,16 @@ return {
       clangd = {},
       -- TS/JS
       tsserver = {
-        init_options = {
-          plugins = {
-            {
-              name = '@vue/typescript-plugin',
-              location = '/opt/homebrew/lib/node_modules/@vue/language-server',
-              languages = { 'vue' },
-            },
-          },
+        filetypes = {
+          'typescript',
+          'javascript',
+          'javascriptreact',
+          'typescriptreact'
         },
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        -- Exclude 'vue' from tsserver to ensure volar handles Vue files
       },
       volar = {
+        filetypes = { 'vue' }, -- Ensure that only volar handles Vue files
         init_options = {
           vue = { hybridMode = false },
         },
