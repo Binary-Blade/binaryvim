@@ -15,7 +15,7 @@ vim.opt.clipboard = 'unnamedplus' -- Use the system clipboard
 
 -- Editor Behavior Options
 vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.shiftwidth = 2   -- Number of spaces to use for each step of indentation
+vim.opt.shiftwidth = 4   -- Number of spaces to use for each step of indentation
 vim.opt.smartcase = true -- Case-insensitive searching unless capital letters are used
 vim.opt.hlsearch = true  -- Highlight search matches
 

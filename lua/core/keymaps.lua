@@ -4,12 +4,9 @@ local opts = { noremap = true, silent = true }
 
 -- TODO: TO REFACTORING LATER : REORGANIZE IT FOR SEPARATE CONCERNS
 
+-- General Mappings
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 set('t', '<leader>q', '<C-\\><C-n>', opts)
-
--- Debugger
--- set('n', '<leader>db', '<Cmd>DapToggleBreakPoint<CR>', { desc = '[D]ebugger Add [B]reakpoint' }, opts)
--- set('n', '<leader>dc', '<Cmd>DapContinue<CR>', { desc = '[D]ebugger Start or [C]ontinue' }, opts)
 
 -- Copilot
 set('n', '<leader>cc', ':lua ToggleCopilot()<CR>', { desc = '[C]ode Toggle [C]opilot' }, opts)
@@ -39,10 +36,18 @@ set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- TodoComment
-set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX' }))
-set('n', '<leader>fw', '<CMD>TodoTelescope keywords=WARN<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: WARNING' }))
-set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
-set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>', vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
+set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX<CR>',
+  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX' }))
+set('n', '<leader>fw', '<CMD>TodoTelescope keywords=WARN<CR>',
+  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: WARNING' }))
+set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>',
+  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
+set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>',
+  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
+
+-- Debugger
+-- set('n', '<leader>db', '<Cmd>DapToggleBreakPoint<CR>', { desc = '[D]ebugger Add [B]reakpoint' }, opts)
+-- set('n', '<leader>dc', '<Cmd>DapContinue<CR>', { desc = '[D]ebugger Start or [C]ontinue' }, opts)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

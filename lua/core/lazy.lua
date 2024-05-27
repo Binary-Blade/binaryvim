@@ -17,6 +17,7 @@ require 'core.settings'
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup {
+
   spec = {
     { import = 'plugins.configs' },
     { import = 'plugins.database' },
