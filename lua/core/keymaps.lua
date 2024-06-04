@@ -36,14 +36,12 @@ set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- TodoComment
-set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX<CR>',
-  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: TODO, FIX' }))
-set('n', '<leader>fw', '<CMD>TodoTelescope keywords=WARN<CR>',
-  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: WARNING' }))
+set('n', '<leader>ft', '<CMD>TodoTelescope keywords=TODO,FIX,WARNING,HACK<CR>',
+  vim.tbl_extend('force', opts, { desc = '[F]ind Todo' }))
 set('n', '<leader>fn', '<CMD>TodoTelescope keywords=NOTE<CR>',
   vim.tbl_extend('force', opts, { desc = '[F]ind Todo: NOTE' }))
-set('n', '<leader>fh', '<CMD>TodoTelescope keywords=HACK<CR>',
-  vim.tbl_extend('force', opts, { desc = '[F]ind Todo: Hack' }))
+
+set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Debugger
 -- set('n', '<leader>db', '<Cmd>DapToggleBreakPoint<CR>', { desc = '[D]ebugger Add [B]reakpoint' }, opts)
@@ -70,7 +68,7 @@ function M.telescope_keymaps()
   set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 
   -- Buffer
-  set('n', '<leader>bb', builtin.buffers, { desc = '[B]uffers Find [B]uffers' })
+  set('n', '<leader>fb', builtin.buffers, { desc = '[B]uffers Find [B]uffers' })
   -- Find
   set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
   set('n', '<leader>ff', builtin.find_files, { desc = '[F]find [F]iles' })
