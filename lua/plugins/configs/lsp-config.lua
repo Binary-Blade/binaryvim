@@ -58,6 +58,8 @@ return {
           },
         },
       },
+      -- PYTHON
+      pylsp = {},
     }
 
     -- Configure each LSP server

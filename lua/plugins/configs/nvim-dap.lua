@@ -1,23 +1,16 @@
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
+    'mfussenegger/nvim-dap-python',
   },
   opts = {
-    -- Makes a best effort to setup the various debuggers with
-    -- reasonable debug configurations
     automatic_setup = true,
-    -- You can provide additional configuration to the handlers,
-    -- see mason-nvim-dap README for more information
     handlers = {
       function(config)
-        -- all sources with no handler get passed here
-
-        -- Keep original functionality
         require('mason-nvim-dap').default_setup(config)
       end,
       php = function(config)
@@ -33,58 +26,100 @@ return {
             },
           },
         }
-        require('mason-nvim-dap').default_setup(config) -- don't forget this!
+        require('mason-nvim-dap').default_setup(config)
       end,
     },
-    -- You'll need to check that you have the required things installed
-    -- online, please don't ask me how to install them :)
     ensure_installed = {
       'php',
       'codelldb',
       'bash',
+      'python',
     },
   },
-
   config = function()
-    local dap = require 'dap'
-    local dapui = require 'dapui'
+    local dap = require('dap')
+    local dapui = require('dapui')
 
+    dap.set_log_level('DEBUG')
+
+
+    -- Mason-Nvim-DAP setup
     require('mason-nvim-dap').setup {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
       automatic_setup = true,
-
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
-      handlers = {},
-
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
+      handlers = {}, -- Add specific handlers if needed
       ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
         'codelldb',
         'php',
         'typescript-language-server',
         'vue-language-server',
+        'pyright',
+        'python',
+        'debugpy',
       },
     }
 
-    -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<leader>ds', dap.continue, { desc = '[D]ebug: [S]tart/Continue' })
-    vim.keymap.set('n', '<leader>di', dap.step_into, { desc = '[D]ebug: Step [I]nto' })
-    vim.keymap.set('n', '<leader>do', dap.step_over, { desc = '[D]ebug: Step [O]ver' })
-    vim.keymap.set('n', '<leader>dO', dap.step_out, { desc = '[D]Debug: Step [o]ut' })
-    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = '[D]ebug: Toggle [B]reakpoint' })
-    vim.keymap.set('n', '<leader>dB', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = '[D]ebug: Set [B]reakpoint' })
+    -- Python configuration
+    require('dap-python').setup('~/.local/share/nvim/mason/packages/debugpy/venv/bin/python', {
+      include_configs = true,
+    })
 
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
+    -- DAP listeners
+    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.after.event_exited['dapui_config'] = function()
+      print('Event exited')
+    end
+
+    -- Custom DAP configuration for Python
+    dap.adapters.python = {
+      type = 'executable',
+      command = '/Users/binary/.local/share/nvim/mason/packages/debugpy/venv/bin/python',
+      args = { '-m', 'debugpy.adapter' },
+    }
+    dap.configurations.python = {
+      {
+        type = 'python',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        pythonPath = function()
+          return '/Users/binary/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+        end,
+      },
+    }
+
+    -- Custom event handlers for debugpy
+    dap.listeners.before.event_terminated['custom_debugpy'] = function()
+      print('Debugpy session terminated')
+    end
+    dap.listeners.before.event_exited['custom_debugpy'] = function()
+      print('Debugpy session exited')
+    end
+    dap.listeners.before.event_stopped['custom_debugpy'] = function()
+      print('Debugpy session stopped')
+    end
+
+    vim.fn.execute('let g:dap_log_level = "DEBUG"')
+    vim.fn.execute('let g:dap_python_log_level = "DEBUG"')
+
+
+    -- Keymaps for debugging
+    local keymaps = {
+      { 'n', '<leader>ds', dap.continue,                                                              '[D]ebug: [S]tart/Continue' },
+      { 'n', '<leader>di', dap.step_into,                                                             '[D]ebug: Step [I]nto' },
+      { 'n', '<leader>do', dap.step_over,                                                             '[D]ebug: Step [O]ver' },
+      { 'n', '<leader>dO', dap.step_out,                                                              '[D]Debug: Step [o]ut' },
+      { 'n', '<leader>db', dap.toggle_breakpoint,                                                     '[D]ebug: Toggle [B]reakpoint' },
+      { 'n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, '[D]ebug: Set [B]reakpoint' },
+      { 'n', '<F7>',       dapui.toggle,                                                              'Debug: See last session result.' },
+    }
+    for _, map in ipairs(keymaps) do
+      vim.keymap.set(unpack(map))
+    end
+
+    -- DAP UI setup
     dapui.setup {
-      -- Set icons to characters that are more likely to work in every terminal.
-      --    Feel free to remove or use ones that you like more! :)
-      --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
@@ -100,12 +135,5 @@ return {
         },
       },
     }
-
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
-
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
   end,
 }
