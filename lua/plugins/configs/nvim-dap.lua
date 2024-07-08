@@ -106,16 +106,17 @@ return {
 
     -- Keymaps for debugging
     local keymaps = {
-      { 'n', '<leader>ds', dap.continue,                                                              '[D]ebug: [S]tart/Continue' },
-      { 'n', '<leader>di', dap.step_into,                                                             '[D]ebug: Step [I]nto' },
-      { 'n', '<leader>do', dap.step_over,                                                             '[D]ebug: Step [O]ver' },
-      { 'n', '<leader>dO', dap.step_out,                                                              '[D]Debug: Step [o]ut' },
-      { 'n', '<leader>db', dap.toggle_breakpoint,                                                     '[D]ebug: Toggle [B]reakpoint' },
-      { 'n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, '[D]ebug: Set [B]reakpoint' },
-      { 'n', '<F7>',       dapui.toggle,                                                              'Debug: See last session result.' },
+      { 'n', '<leader>ds', dap.continue,                                                              { desc = '[D]ebug: [S]tart/Continue' } },
+      { 'n', '<leader>di', dap.step_into,                                                             { desc = '[D]ebug: Step [I]nto' } },
+      { 'n', '<leader>do', dap.step_over,                                                             { desc = '[D]ebug: Step [O]ver' } },
+      { 'n', '<leader>dO', dap.step_out,                                                              { desc = '[D]Debug: Step [o]ut' } },
+      { 'n', '<leader>db', dap.toggle_breakpoint,                                                     { desc = '[D]ebug: Toggle [B]reakpoint' } },
+      { 'n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, { desc = '[D]ebug: Set [B]reakpoint' } },
+      { 'n', '<F7>',       dapui.toggle,                                                              { desc = 'Debug: See last session result.' } },
     }
+
     for _, map in ipairs(keymaps) do
-      vim.keymap.set(unpack(map))
+      vim.keymap.set(map[1], map[2], map[3], map[4])
     end
 
     -- DAP UI setup
