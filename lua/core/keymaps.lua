@@ -11,12 +11,6 @@ set('t', '<leader>q', '<C-\\><C-n>', opts)
 -- Copilot
 set('n', '<leader>cc', ':lua ToggleCopilot()<CR>', { desc = '[C]ode Toggle [C]opilot' })
 
--- Quick keymaps
-set('n', '<leader>q)', 'vi)', { desc = '[Q]uick Inside "vi()"' })
-set('n', '<leader>q}', 'vi}', { desc = '[Q]uick Inside "vi{}"' })
-set('n', '<leader>q]', 'vi]', { desc = '[Q]uick Inside "vi[]"' })
-set('n', "<leader>q'", "vi'", { desc = '[Q]uick Inside "vi"' })
-
 -- Keymaps to resize tabs C-w + <direction> but increase by 15
 set('n', '<C-w>+', '<C-w>12>', { desc = 'Increase window size by 12' })
 set('n', '<C-w>-', '<C-w>12<', { desc = 'Decrease window size by 12' })
