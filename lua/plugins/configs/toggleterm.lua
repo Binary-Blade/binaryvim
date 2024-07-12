@@ -39,7 +39,7 @@ return {
     }
 
     local function setupTerminals()
-      for name, config in pairs(terminals) do
+      for _, config in pairs(terminals) do
         local term = Terminal:new {
           cmd = config.cmd,
           dir = config.dir,
@@ -56,7 +56,7 @@ return {
             vim.cmd 'startinsert!'
             vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
           end,
-          on_close = function(term)
+          on_close = function()
             vim.cmd 'startinsert!'
           end,
         }
@@ -65,7 +65,8 @@ return {
           term:toggle()
         end
 
-        vim.api.nvim_set_keymap('n', config.keymap, '<cmd>lua ' .. config.toggleFunc .. '()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', config.keymap, '<cmd>lua ' .. config.toggleFunc .. '()<CR>',
+          { noremap = true, silent = true })
       end
     end
 
