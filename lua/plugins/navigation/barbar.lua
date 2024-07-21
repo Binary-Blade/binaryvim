@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 return {
   'romgrk/barbar.nvim',
   dependencies = {
-    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+    'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
   },
   init = function()
@@ -60,16 +60,15 @@ return {
   -- Buffer key
   set('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts),
   set('n', '<Tab>', '<Cmd>BufferNext<CR>', opts),
-  set('n', '<leader>x', '<Cmd>BufferClose<CR>', opts),
-  set('n', '<leader>bp', '<Cmd>BufferPick<CR>', { desc = '[B]uffers [P]ick' }, opts),
+  set('n', '<A-x>', '<Cmd>BufferClose<CR>', opts),
+  set('n', '<A-p>', '<Cmd>BufferPick<CR>', { desc = '[B]uffers [P]ick' }, opts),
+  set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', { noremap = true, silent = true }),
+  set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', { noremap = true, silent = true }),
+  set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', { noremap = true, silent = true }),
+  set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', { noremap = true, silent = true }),
   set('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', { desc = '[B]uffers Orders by [D]irectory' }, opts),
   set('n', '<leader>bo', '<Cmd>BufferOrderByLanguage<CR>', { desc = '[B]uffers Orders by [L]language' }, opts),
   set('n', '<leader>bx', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = '[B]uffers Close All' }, opts),
   set('n', '<leader>bl', '<Cmd>BufferCloseBuffersLeft<CR>', { desc = '[B]uffers Close Left' }, opts),
   set('n', '<leader>br', '<Cmd>BufferCloseBuffersRight<CR>', { desc = '[B]uffers Close Right' }, opts),
-  -- FIX: Alt dont work on terminal
-  -- vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', { noremap = true, silent = true }),
-  -- vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', { noremap = true, silent = true }),
-  -- vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', { noremap = true, silent = true }),
-  -- vim.keymap.set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', { noremap = true, silent = true }),
 }
