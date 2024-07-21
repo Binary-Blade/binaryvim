@@ -1,18 +1,75 @@
 return {
-  'folke/which-key.nvim',
-  event = 'VeryLazy',
-  config = function()
-    require('which-key').setup()
-    require('which-key').register {
-      ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-      ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-      ['<leader>d'] = { name = '[D]ebugger', _ = 'which_key_ignore' },
-      ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
-      ['<leader>o'] = { name = '[O]bsidian', _ = 'which_key_ignore' },
-      ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
-      ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-      ['<leader>t'] = { name = '[T]erminal', _ = 'which_key_ignore' },
-      ['<leader>u'] = { name = '[U]nits_Test', _ = 'which_key_ignore' },
-    }
-  end,
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
+    {
+      "<leader>b",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer"
+    },
+    {
+      "<leader>c",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Code"
+    },
+    {
+      "<leader>d",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Debugger"
+    },
+    {
+      "<leader>f",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Find"
+    },
+    {
+      "<leader>g",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Git"
+    },
+    {
+      "<leader>l",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "LSP"
+    },
+    {
+      "<leader>s",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Search"
+    },
+
+    {
+      "<leader>t",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Terminal"
+    },
+    {
+      "<leader>u",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Units Test"
+    },
+  },
 }
