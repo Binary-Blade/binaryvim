@@ -1,5 +1,3 @@
--- Python formatter
-
 return {
   'psf/black',
   ft = 'python',
@@ -11,5 +9,4 @@ return {
       end,
     })
   end
-
 }
