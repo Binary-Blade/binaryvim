@@ -3,7 +3,6 @@ return {
   version = '*',
   config = function()
     local Terminal = require('toggleterm.terminal').Terminal
-    -- HACK:: Explain
     local terminals = {
       lazygit = {
         cmd = 'lazygit',
